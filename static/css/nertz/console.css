@@ -1,0 +1,17 @@
+div.console
+{
+	background: black;
+	width: 100%;
+	float:left;
+}
+div.console p 
+{
+	color: #00EE00;
+	font-family:"Courier new",Courier;
+	margin: 10px;
+	line-height: 20px;
+}
+div.console p span
+{
+	color: #CCC
+}

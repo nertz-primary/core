@@ -1,0 +1,30 @@
+<h1>В магазин поступил новый заказ № {$data.order_ind}.</h1>
+<table cellpadding="5">
+<tr>
+	<th>№</th>
+	<th>Название товара</th>
+	<th>Кол.</th>
+	<th>Цена</th>
+	<th>Сумма</th>
+</tr>
+{foreach from=$data.items key=item_ind item=item}
+	<tr>
+		<td>{$item_ind}</td>
+		<td>{$item.name}</td>
+		<td>{$item.cart_count}</td>
+		<td>{$item.cost}</td>
+		<td>{$item.sum}</td>
+	</tr>
+{/foreach}
+</table>
+<p><b>Итого: </b> {$data.cnt} наименований товаров на сумму {$data.summ} руб.</p>
+<br/>
+<br/>
+{if $data.extra.user}
+	<h2>Информация о покупателе</h2>
+	<p>
+	{foreach from=$data.extra.user key=capt item=val}
+	<b>{$capt} </b> {$val}<br/>
+	{/foreach}
+	</p>
+{/if}

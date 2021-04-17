@@ -1,0 +1,63 @@
+<form action="{url page=$page}" method="POST">
+<input type="hidden" name="ind" value="{$ind}" />
+<input type="hidden" name="act" value="{$forum_act}" />
+{if $forum_act == 'update'}
+<h1 сlass="form">Редактирование раздела</h1>
+{else}
+<h1 сlass="form">Добавление нового раздела</h1>
+{/if}
+<table class="form">
+<tr>
+	<td>
+		Заголовок раздела: 
+	</td>
+	<td class="i">
+		<input type="text" class="text" name="title" {if $params}value="{$params.title}" {/if}/>
+	</td>
+	<td class="e">
+ 		{$error.title}
+	</td>
+</tr>
+<tr>
+	<td>
+		Анотация к разделу: 
+	</td>
+	<td class="i">
+		<input type="text" class="text" name="descr" {if $params}value="{$params.descr}" {/if}/>
+	</td>
+	<td class="e">
+ 		{$error.descr}
+	</td>
+</tr>
+<tr>
+	<td>
+		Права: 
+	</td>
+	<td class="i">
+		{include file="Nertz/Forum/Access.tmpl" access=$params.rights}
+	</td>
+	<td class="e">
+ 		{$error.a_read}
+	</td>
+</tr>
+{if $forum_act == 'update'}
+<tr>
+	<td>
+		Скопировать права на дочерние темы: 
+	</td>
+	<td class="i">
+		<input type="checkbox" name="copy_rights" {if $params.copy_rights == 1}CHECKED{/if} />
+	</td>
+	<td class="e">
+ 		{$error.copy_rights}
+	</td>
+</tr>
+{/if}
+</tr>
+	<td colspan="3">
+		<input type="submit" name="Save" value="Сохранить" />
+	</td>
+<tr>		
+</table>
+</form>
+</form>

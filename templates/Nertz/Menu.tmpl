@@ -1,0 +1,31 @@
+{strip}
+<div class="navbar navbar-static-top">
+	<div class="navbar-inner" id="nav">
+		<ul class="nav">
+		{foreach from=$menu key=capt1 item=val1}
+			<li class="{if $val1.items}dropdown{/if}">
+				<a href="{url page=$val1.page act=$val1.act}" {if $val1.items}class="dropdown-toggle" data-toggle="dropdown"{/if}>{if $val1.bootstrap_icon_class}<i class="{$val1.bootstrap_icon_class}"></i> {/if}{$capt1|replace:" ":"&nbsp;"}{if $val1.items} <b class="caret"></b>{/if}</a>
+				{if $val1.items}
+					<ul class="dropdown-menu">
+					{foreach from=$val1.items key=capt2 item=val2}
+						<li>
+						<a href="{url page=$val2.page act=$val2.act}">{if $val2.bootstrap_icon_class}<i class="{$val2.bootstrap_icon_class}"></i> {/if}{$capt2|replace:" ":"&nbsp;"}</a>
+						{if $val2.items}
+							<ul>
+							{foreach from=$val2.items key=capt3 item=val3}
+								<li>
+								<a href="{url page=$val3.page act=$val3.act}">{if $val3.bootstrap_icon_class}<i class="{$val3.bootstrap_icon_class}"></i> {/if}{$capt3|replace:" ":"&nbsp;"}</a>
+								</li>
+							{/foreach}
+							</ul>
+						{/if}
+						</li>
+					{/foreach}
+					</ul>
+				{/if}	
+			</li>
+		{/foreach}
+		</ul>
+	</div>
+</div>
+{/strip}

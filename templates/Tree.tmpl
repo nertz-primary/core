@@ -1,0 +1,11 @@
+{strip}
+<ul {if $parent_ind == -1}class="jqueryFileTree" style="display: none;"{else}class="directory expanded" {/if}>
+	{foreach from=$items item=item}
+		<li class="{$item.type}{if $item.type == 'directory'}{if $item.content} expanded {else} collapsed{/if}{/if}{if $item.link} {if $item.vlink}v{/if}link{/if}{if $item.active} active{/if}">
+		<a href="{if $item.url}{$item.url}{else}#{/if}" rel="{$item.ind}"{if $item.link} link="{$item.link}"{/if}>{$item.name}</a>{if $item.content}
+			{$item.content}
+		{/if}</li>
+	
+	{/foreach}
+</ul>
+{/strip}

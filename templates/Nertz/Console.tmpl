@@ -1,0 +1,14 @@
+<div class='console'>
+{foreach from=$log_values key=category item=params}
+	{foreach from=$params item=param}
+		{if $category != db}
+			<p>
+			<span>
+			{$param.file}:{$param.line}{if $param.func}, {$param.func}(){/if}
+			</span><br/>
+			[{$category}] {$param.message}
+			</p>
+		{/if}
+	{/foreach}
+{/foreach}
+</div>

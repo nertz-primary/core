@@ -1,0 +1,28 @@
+<form action="{url_array params=$url}" method="post" enctype="multipart/form-data">
+{if $caption}<h1>{$caption}</h1>{/if}
+<table class="{$css_class}" id="{$css_id}" cellpadding="0" cellspacing="0">
+{foreach from=$fields key=name item=field name=fields}
+<tr id='tr_{$name}'>
+	<td class="caption">{$field.caption}</td>
+	<td class="field">{$field.html}
+	{if $field.description}
+    	  <img width="16" height="16" border="0" onmouseout='hide_info(this)'
+onmouseover='tooltip(this,"{$field.description|escape:"html"|replace:"\r\n":"<br/>"}")' src="{static_url path="core/img/button/help.gif"}" />
+     {/if}
+	</td>
+	<td></td>
+</tr>
+{/foreach}
+</table>
+<br/>
+<div class="buttons">
+{foreach from=$buttons key=name item=button name=buttons}
+    {button name=$name caption=$button.caption img=$button.image}
+{/foreach}
+</form>
+<script type="text/javascript">
+var {$form_name}_visibles={json value=$visibles};
+window.onload = function(){literal}{{/literal}
+form_select_change('', {$form_name}_visibles);
+{literal}}{/literal}
+</script>

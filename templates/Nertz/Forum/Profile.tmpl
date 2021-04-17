@@ -1,0 +1,85 @@
+﻿<table cellpadding="0" cellspacing="0" class="forum">
+		<tr>
+		<td class="clear" colspan="9">
+			<h1 class="kaska">Страница пользователя</h1>
+		</td>
+		</tr>
+		<tr>		
+			<th class="lt_border"><img src="{static_url path="img/forum/lt_border.png"}" width="26" height="36" /></th>
+			<th class="lt_corner"><img src="{static_url path="img/forum/lt_corner.png"}" width="7" height="36" /></th>
+			<th>
+				Профиль пользователя
+			</th>
+			<th class="rt_corner"><img src="{static_url path="img/forum/rt_corner.png"}" width="7" height="36" /></th>
+			<th class="rt_border"><img src="{static_url path="img/forum/rt_border.png"}" width="26" height="36" /></th>
+		</tr>
+		<!-- Topic Body -->
+		<tr class="profile">
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="profile">
+				<table class="pr">
+					<tr>
+						<td class="s c">
+							<img src="{$user.avatar}" alt="">
+						</td>
+						<td class="t pnick c">
+							<br/>
+							{$user.login}
+						</td>
+					</tr>
+					<tr>
+						<td class="s">
+							Дата регистрации
+						</td>
+						<td class="t">
+							{$user.created|sdate}
+						</td>
+					</tr>
+					<tr>
+						<td class="s">
+							Статус
+						</td>
+						<td class="t">
+							{$user.status}
+						</td>
+					</tr>
+					<tr>
+						<td class="s">
+							Количество сообщений
+						</td>
+						<td class="t">
+							{$user.message_count}
+						</td>
+					</tr>
+					<tr>
+						<td class="s">
+							Подпись
+						</td>
+						<td class="t">
+							{$user.comment}
+						</td>
+					</tr>
+					<tr>
+						<td class="s">
+							
+						</td>
+						<td class="t">
+						<a class="um" href="{url page=$page form="um" ind=$user.ind }">Найти все сообщения пользователя</a>	
+						</td>
+					</tr>
+				</table>		
+			</td>
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="lb_corner">
+				&nbsp;
+			</td>
+			<td class="bb" >
+				&nbsp;
+			</td>
+			<td colspan="2" class="rb_corner">
+				&nbsp;
+			</td>
+		</tr>
+	</table>

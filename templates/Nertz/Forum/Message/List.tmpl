@@ -1,0 +1,170 @@
+﻿<table cellpadding="0" cellspacing="0" class="forum">
+		<tr>
+		<td class="clear" colspan="9">
+		<table class="dbl">
+			<tr>
+				<td class="l">
+		<h1 class="kaska">Форум</h1>
+			<div class="flinks"><a href="{url page=$page form="rights"}">Правила форума</a>&nbsp;&nbsp;
+				{if $user_ind}
+					<a href="{url page=$page form="register"}">Мой профиль</a>
+				{else}
+					<a href="{url page=$page form="login"}">Регистрация</a>
+				{/if}
+			</div>
+				</td>
+			</tr>
+		</table>
+		{if not $user_ind}		
+		<div class="notice"><p>Для комфортного и полноценного общения на форуме, пожалуйста, <a href="{url page=$page form="login"}" >пройдите регистрацию</a> на сайте, это займет несколько минут.</p></div>
+		{/if}
+		<table class="dbl clear">
+			<tr>
+				<td class="l">
+					<div id="breadscrumbs">
+						<a href="{url page=$page}">Форум</a><span>&nbsp;/&nbsp;</span>
+						<a href="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind }">{$tg_title}</a><span>&nbsp;/&nbsp;</span>
+						<a href="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind}">{$topic.title}</a>
+					</div>
+				</td>
+				<td class="r">
+					<form action="{url page=$page form=topic_list topic_ind=$topic_ind}" method="post">
+					<select name="topicgroup_ind">
+					{foreach from=$tg_list item=item}
+					<option value="{$item.ind}" label="{$item.title}" {if $item.ind == $topicgroup_ind}SELECTED{/if}>{$item.title}</option>
+					{/foreach}
+					</select><input type="submit" value="Перейти"/>
+					</form>
+				</td>
+			</tr>
+		</table>
+		</td>
+		</tr>
+		<tr>		
+			<th class="lt_border"><img src="{static_url path="img/forum/lt_border.png"}" width="26" height="36" /></th>
+			<th class="lt_corner"><img src="{static_url path="img/forum/lt_corner.png"}" width="7" height="36" /></th>
+			<th>
+				&nbsp;
+			</th>
+			<th>
+				&nbsp;
+			</th>
+			<th class="rt_corner"><img src="{static_url path="img/forum/rt_corner.png"}" width="7" height="36" /></th>
+			<th class="rt_border"><img src="{static_url path="img/forum/rt_border.png"}" width="26" height="36" /></th>
+		</tr>
+		<!-- Topic Body -->
+		<tr class="gray">
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="u" >
+				<a class="o" {if $topic.user_ind}href="{url page=$page form="profile" ind=$topic.user_ind}"{/if}>{if $topic.user_ind == 0}Аноним{else}{$topic.user_login}{/if}</a>
+			</td>
+			<td class="gray">
+			<div>
+			{if $user_ind && ($topic.user_ind == $user_ind || $is_moderator)}
+				<p>{$topic.created|sdate}</p>
+				<a class="e" href="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind act="edit" ind=$topic.ind}"></a>
+				<a class="d" href="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind act="delete" ind=$topic.ind}"></a>
+			{else}
+				<p class="c">{$topic.created|sdate}</p></div>
+			{/if}
+			</div>
+			</td>
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+			</tr>
+		<tr>
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="u">
+				<div>
+				<img src="{$topic.avatar}" alt="">
+				</div>
+				<p></p>
+				{if $topic.user_ind}
+				<!--p>Статус:    {$topic.user_status}</p-->
+				<p>{$topic.user_message_count} {number2word number=$topic.user_message_count name1=сообщение name2=сообщения name5=сообщений}</p>
+				{/if}
+			</td>
+			<td class="s m">
+				{$topic.body|htmlwrap:80:" ":true}
+				{if $topic.user_comment}
+				    <div class="ucomment">{$topic.user_comment|htmlwrap:80:" ":true}</div>
+				{/if}
+			</td>				
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		
+		{foreach from=$list item=item name=list}		
+		<tr class="gray">
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="u">
+				<a class="o" {if $item.user_ind}href="{url page=$page form="profile" ind=$item.user_ind}"{/if}>{if $item.user_ind == 0}Аноним{else}{$item.user_login}{/if}</a>
+			</td>
+			<td class="gray">
+			{if $user_ind && ($item.user_ind == $user_ind || $is_moderator)}
+			<div><p>{$item.created|sdate}</p></a>
+				<a class="e" href="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind act="edit" ind=$item.ind}"></a>
+				<a class="d" href="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind act="delete" ind=$item.ind}"></a>
+			</div>
+			{else}
+				<div><p class="c">{$item.created|sdate}</p></div>
+			{/if}
+			</td>
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+			</tr>
+		<tr>
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="u">
+				<div>
+				<img src="{$item.avatar}" alt="">
+				</div>
+				<p></p>
+				{if $item.user_ind}
+				<!--p>Статус:    {$item.user_status}</p-->
+				<p>{$item.user_message_count} {number2word number=$item.user_message_count name1=сообщение name2=сообщения name5=сообщений}</p>
+				{/if}
+			</td>
+			<td class="s m">
+				{$item.body|htmlwrap:80:" ":true}
+				<div class="ucomment">{$item.user_comment|htmlwrap:80:" ":true}</div>
+			</td>				
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		{/foreach}		
+		<tr>
+			<td colspan="2" class="lb_corner">
+				&nbsp;
+			</td>
+			<td class="bb" colspan="2">
+				&nbsp;
+			</td>
+			<td colspan="2" class="rb_corner">
+				&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td class="clear" colspan="9">
+			<table class="dbl">
+			<tr>
+				<td class="l">
+				{if $user_ind}
+				<form action="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind}" method="post">
+				<input type="submit" value="Сохранить"/>
+				<input type="hidden" name="act" value="subscribe"/>
+				<input type="checkbox" name="subscribe" {if $subscription == 1}CHECKED{/if} /> уведомлять меня о появлении новых сообщений в этой теме
+				</form>
+				{/if}
+				</td>
+				<td class="r">
+				{if $can_post}
+				<form action="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind}" method="POST">
+				<input type="hidden" name="act" value="add" />
+				<input type="submit" name="add" value="Добавить сообщение" />
+				</form>
+				{/if}
+				</td>
+			</tr>
+		</table>
+			
+			
+				
+		</tr>
+	</table>

@@ -1,0 +1,135 @@
+﻿<table cellpadding="0" cellspacing="0" class="forum">
+		<tr>
+		<td class="clear" colspan="9">
+		<h1 class="kaska">Форум</h1>
+		<div class="flinks"><a href="{url page=$page form="rights"}">Правила форума</a>&nbsp;&nbsp;
+		{if $user_ind}
+			<a href="{url page=$page form="register"}">Мой профиль</a>
+		{else}
+			<a href="{url page=$page form="login"}">Регистрация</a>
+		{/if}
+		</div>
+		{if not $user_ind}
+		<div class="notice"><p>Для комфортного и полноценного общения на форуме, пожалуйста, <a href="{url page=$page form="login"}" >пройдите регистрацию</a> на сайте, это займет несколько минут.</p></div>
+		{/if}
+		<table class="dbl">
+			<tr>
+				<td class="l">
+					<div id="breadscrumbs">
+						<a href="{url page=$page}">Форум</a><span>&nbsp;/&nbsp;</span>
+						<a href="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind }">{$tg_title}</a>
+					</div>
+				</td>
+				<td class="r">
+					<form method="post">
+					<select name="topicgroup_ind">
+					{foreach from=$tg_list item=item}
+					<option value="{$item.ind}" label="{$item.title}" {if $item.ind == $topicgroup_ind}SELECTED{/if}>{$item.title}</option>
+					{/foreach}
+					</select><input type="submit" value="Перейти"/>
+					</form>
+				</td>
+			</tr>
+		</table>
+		</td>
+		</tr>
+		{if $list}
+		<tr>		
+			<th class="lt_border"><img src="{static_url path="img/forum/lt_border.png"}" width="26" height="36" /></th>
+			<th class="lt_corner"><img src="{static_url path="img/forum/lt_corner.png"}" width="7" height="36" /></th>
+			<th colspan="2">
+				Тема
+			</th>
+			<th class="n">
+				Сообщений
+			</th>
+			<th class="n">
+				Просмотров
+			</th>
+			<th >
+				Последнее Сообщение
+			</th>
+			<th class="rt_corner"><img src="{static_url path="img/forum/rt_corner.png"}" width="7" height="36" /></th>
+			<th class="rt_border"><img src="{static_url path="img/forum/rt_border.png"}" width="26" height="36" /></th>
+		</tr>
+		{foreach from=$list item=item name=list}		
+		<tr {if $smarty.foreach.list.iteration is not odd}{/if}class="chet" >
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="f">
+				<div class="cp1"></div>
+			</td>
+			<td class="s">
+			
+				<a class="h" href="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$item.ind}">{$item.title|htmlwrap:30:" ":true}</a>
+				{if $user_ind  && ($item.user_ind == $user_ind || $is_moderator)}
+					<a class="e" href="{url page=$page form="topic_list" act="edit" topicgroup_ind=$topicgroup_ind ind=$item.ind}"></a>
+					<a class="d" href="{url page=$page form="topic_list" act="delete" topicgroup_ind=$topicgroup_ind ind=$item.ind}"></a>
+				{/if}
+			</td>
+			<td class="n">
+				<p class="n">{$item.message_count}</p>
+			</td>
+			<td class="n">
+				<p class="n">{$item.view_count}</p>
+			</td>			
+			<td class="lm">
+				<p class="lt"><a {if $item.last_user_ind}href="{url page=$page form="profile" ind={url page=$page form="profile" ind=$item.ind}}/"{/if}>{if $item.last_user_ind}{$item.last_user_login}{else}Аноним{/if}</a></p>
+				<p>{$item.updated|sdate}</p>
+			</td>				
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		{/foreach}
+		<tr>
+			<td colspan="2" class="lb_corner">
+				&nbsp;
+			</td>
+			<td class="bb" colspan="5">
+				&nbsp;
+			</td>
+			<td colspan="2" class="rb_corner">
+				&nbsp;
+			</td>
+		</tr>
+		{else}
+		<tr>
+			<td class="clear" colspan="9">
+			<br/>
+			<br/>
+				<center><h1>В этом разделе нет тем</h1></center>
+			<br/>
+			<br/>	
+			</td>
+		</tr>	
+		{/if}		
+		<tr>
+			<td class="clear" colspan="9">
+			<table class="dbl">
+			<tr>
+				<td class="l">
+				{if $user_ind}
+				<form action="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind}" method="post">
+				<input type="submit" value="Сохранить"/>
+				<input type="hidden" name="act" value="subscribe"/>
+				<input type="checkbox" name="subscribe" {if $subscription == 1}CHECKED{/if}  /> уведомлять меня о появлении новых тем в разделе
+				</form>
+				{/if}
+				</td>
+				<td class="r">
+				{if $can_post}
+				<form action="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind}" method="POST">
+				<input type="hidden" name="act" value="add" />
+				<input type="submit" name="add" value="Добавить тему" />
+				</form>
+				{/if}
+				</td>
+			</tr>
+		</table>
+		
+		</td>
+			
+			
+				
+		</tr>
+
+		
+	</table>

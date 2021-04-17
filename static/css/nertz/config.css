@@ -1,0 +1,52 @@
+#dirs
+{
+	width: 200px;
+    padding: 3px;
+    border: 1px solid black;
+    vertical-align: top;
+}
+#dirs a
+{
+    color:#666666;
+    font-family:'Lucida Grande',Verdana,Sans-Serif;
+    font-size:15px;
+	font-weight:bold;
+	line-height:18px;
+	text-decoration: none;
+    display: block;
+    padding: 3px 3px 3px 22px;
+	margin: 0;
+	background: url(../../img/button/form.gif) 3px 5px no-repeat;
+	height: 100%;
+	white-space: nowrap;
+}
+#dirs a.Folder
+{
+	 background: url(../../img/button/folder.gif) 3px 5px no-repeat;
+}
+#dirs a.Array
+{
+	 background: url(../../img/button/array.gif) 3px 5px no-repeat;
+}
+#dirs a.Up
+{
+	 background: url(../../img/button/folder_up.gif) 3px 5px no-repeat;
+}
+#dirs a:hover
+{
+	background-color: #eeeeee;
+}
+#form
+{
+     border: 1px solid black;
+	 padding: 3px;
+  	 vertical-align: top;
+}
+#config
+{
+	width: 800px;
+}
+#sep
+{
+	width: 7px;
+}

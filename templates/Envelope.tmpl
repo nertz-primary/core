@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{$page_title}</title>
+<meta name="keywords" content="{$page_keywords}" />
+<meta name="description" content="{$page_description}" />
+<meta name="generator" content="Nertz Core v3.0" />
+<link rel="stylesheet" href="{static_url path="/core/css/admin.css"}" type="text/css" /> 
+<link rel="stylesheet" href="{static_url path="/includes/bootstrap/css/bootstrap.min.css"}" type="text/css" /> 
+<link rel="stylesheet" href="{static_url path="/includes/bootstrap/css/font-awesome.min.css"}" type="text/css" /> 
+
+
+<script type="text/javascript" src="{static_url path="/includes/jquery/jquery-1.9.1.min.js"}"></script>
+<script type="text/javascript" src="{static_url path="/includes/jquery/jquery-migrate-1.1.1.min.js"}"></script>
+<script type="text/javascript" src="{static_url path="/includes/bootstrap/js/bootstrap.min.js"}"></script>
+
+{if $css_files}
+	{foreach from=$css_files item=css}
+		<link rel="stylesheet" href="{static_url path="$css"}" type="text/css" /> 
+	{/foreach}
+{/if}
+{foreach from=$js_files item=js}
+	<script type="text/javascript" src="{static_url path="$js"}"></script>
+{/foreach}
+</head>
+<body>
+	{$menu}
+	<div id="body" >{$content}</div>
+</body>
+</html>

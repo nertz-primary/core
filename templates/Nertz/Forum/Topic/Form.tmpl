@@ -1,0 +1,60 @@
+{if $forum_act == 'update'}
+<h1 сlass="form">Редактирование темы</h1>
+{else}
+<h1 сlass="form">Добавление новой темы</h1>
+{/if}
+<form action="{url page=$page form="topic_list" topicgroup_ind=$topicgroup_ind}" method="POST">
+{if $ind}
+	<input type="hidden" name="ind" value="{$ind}" />
+{/if}
+<input type="hidden" name="act" value="{$forum_act}" />
+<table class="form">
+<tr>
+	<td>
+		Заголовок темы: 
+	</td>
+	<td class="i">		
+		<input type="text" name="title" {if $params}value="{$params.title}" {/if}/>
+	</td>
+	<td class="e">
+	{if $error}
+ 		{$error.title}
+ 	{/if}	
+	</td>
+</tr>
+<tr>
+	<td>
+		Сообщение темы:<br/> 
+		<a href="{url page=$page form="docs"}">Как загружать картинки?</a>
+	</td>
+	<td class="i">		
+		<!--<textarea name="body" rows="10">{$params.body}</textarea>-->
+		{fckeditor name="body"}{if $params}{$params.body}{/if}{/fckeditor}
+	</td>
+	<td class="e">
+	{if $error}
+ 		{$error.body}
+ 	{/if}	
+	</td>
+</tr>
+{if $is_moderator}
+<tr>
+	<td>
+		Права: 
+	</td>
+	<td class="i">
+		{include file="Nertz/Forum/Access.tmpl" access=$params.rights}
+	</td>
+	<td class="e">
+ 		{$error.a_read}
+	</td>
+</tr>
+{/if}
+</tr>
+	<td colspan="3">
+		<input type="submit" name="Save" value="Сохранить" />
+	</td>
+<tr>		
+</table>
+</form>
+</form>

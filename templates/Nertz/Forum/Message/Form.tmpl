@@ -1,0 +1,33 @@
+{if $forum_act == 'update'}
+<h1 сlass="form">Редактирование сообщения</h1>
+{else}
+<h1 сlass="form">Добавление нового сообщения</h1>
+{/if}
+<form action="{url page=$page form="message_list" topicgroup_ind=$topicgroup_ind topic_ind=$topic_ind}" method="POST">
+{if $ind}
+	<input type="hidden" name="ind" value="{$ind}" />
+{/if}
+<input type="hidden" name="act" value="{$forum_act}" />
+<table class="form">
+<tr>
+	<td>
+		Текст сообщения:<br/> 
+		<a href="{url page=$page form="docs"}">Как загружать картинки?</a> 
+	</td>
+	<td class="i">		
+		{fckeditor name="body"}{$params.body}{/fckeditor}
+	</td>
+	<td class="e">
+	{if $error}
+ 		{$error.body}
+ 	{/if}	
+	</td>
+</tr>
+</tr>
+	<td colspan="3">
+		<input type="submit" name="Save" value="Сохранить" />
+	</td>
+<tr>		
+</table>
+</form>
+</form>

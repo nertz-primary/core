@@ -1,0 +1,58 @@
+<table cellpadding="0" cellspacing="0" class="forum">
+		<tr>
+		<td class="clear" colspan="9">
+			<h1 class="kaska">Сообщения пользователя {$login}</h1>
+		</td>
+		</tr>
+		<tr>		
+			<th class="lt_border"><img src="{static_url path="img/forum/lt_border.png"}" width="26" height="36" /></th>
+			<th class="lt_corner"><img src="{static_url path="img/forum/lt_corner.png"}" width="7" height="36" /></th>
+			<th>
+				Профиль пользователя
+			</th>
+			<th class="rt_corner"><img src="{static_url path="img/forum/rt_corner.png"}" width="7" height="36" /></th>
+			<th class="rt_border"><img src="{static_url path="img/forum/rt_border.png"}" width="26" height="36" /></th>
+		</tr>
+		<!-- Topic Body -->
+		<tr class="profile">
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="profile" width="908" >
+<font size="3">
+			<b>Всего сообщений и тем:</b> {$count}<span lang="en-us">; </span></font>
+			{if $count > 0}
+			<p>&nbsp;</p>
+			<p>Последнее сообщение: {$last_um.me_created|sdate}, тема:&nbsp;{$last_um.title}</p>
+			<hr size="1" color="#CECFCE">
+			<table  width="100%" id="table1" height="78" >
+				<tr>
+					<td height="72" width="852" style="border-width: 0;">
+					{foreach from=$um item=item name=list}
+					<p style="margin-top: 0; margin-bottom: 6px"><font size="2">
+					<a class="h" href="{url page=$page form="message_list" topicgroup_ind=$item.topicgroup_ind topic_ind=$item.topic_ind}">
+					{$item.title}</a></font></p>
+					<p style="margin-top: 0; margin-bottom: 6px">
+					<font color="#999999" style="font-size: 9pt">(создана: {$item.created|sdate}<span lang="en-us">;
+					</span>автор: <span lang="en-us">{$item.login})</span></font></p>
+					{$item.body}
+					{if not $smarty.foreach.list.last}
+						<hr size="1" color="#CECFCE">
+					{/if}	
+					{/foreach}
+				</tr>
+			</table>
+			{/if}
+			</td>
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="lb_corner">
+				&nbsp;
+			</td>
+			<td class="bb" >
+				&nbsp;
+			</td>
+			<td colspan="2" class="rb_corner">
+				&nbsp;
+			</td>
+		</tr>
+	</table>

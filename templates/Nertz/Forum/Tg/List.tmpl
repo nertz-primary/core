@@ -1,0 +1,129 @@
+<table cellpadding="0" cellspacing="0" class="forum">
+		<tr>
+		<td class="clear" colspan="9">
+		<h1 class="kaska">Форум</h1>
+		<div class="flinks"><a href="{url page=$page form="rights"}">Правила форума</a>&nbsp;&nbsp;
+		{if $user_ind}
+			<a href="{url page=$page form="register"}">Мой профиль</a>
+		{else}
+			<a href="{url page=$page form="login"}">Регистрация</a>
+		{/if}
+		</div>
+		{if not $user_ind}
+		<div class="notice"><p>Для комфортного и полноценного общения на форуме, пожалуйста, <a href="{url page=$page form="login"}" >пройдите регистрацию</a> на сайте, это займет несколько минут.</p></div>
+		{/if}
+		</td>
+		</tr>
+		<tr>		
+			<th class="lt_border"><img src="{static_url path="img/forum/lt_border.png"}" width="26" height="36" /></th>
+			<th class="lt_corner"><img src="{static_url path="img/forum/lt_corner.png"}" width="7" height="36" /></th>
+			<th colspan="2">
+				Раздел
+			</th>
+			<th class="n">
+				Сообщений
+			</th>
+			<th class="n">
+				Тем
+			</th>
+			<th >
+				Последнее Сообщение
+			</th>
+			<th class="rt_corner"><img src="{static_url path="img/forum/rt_corner.png"}" width="7" height="36" /></th>
+			<th class="rt_border"><img src="{static_url path="img/forum/rt_border.png"}" width="26" height="36" /></th>
+		</tr>
+		{foreach from=$list item=item name=list}		
+		<tr {if $smarty.foreach.list.iteration is not odd}{/if} class="chet" >
+			<td class="lb">&nbsp;</td><td class="lsb">&nbsp;</td>
+			<td class="f">
+				<div class="cp1"></div>
+			</td>
+			<td class="s">
+				<a class="h" href="{url page=$page form="topic_list" topicgroup_ind=$item.ind}">{$item.title}</a>
+				{if $is_moderator}<a class="e" href="{url page=$page form="tg_list" act="edit" ind=$item.ind}"></a>
+					{if $item.topic_count == 0}
+						<a class="d" href="{url page=$page form="tg_list" act="delete" ind=$item.ind}"></a>
+					{/if}
+				{/if}
+				<p>{$item.descr}</p>
+			</td>
+			<td class="n">
+				<p class="n">{$item.message_count}</p>
+			</td>
+			<td class="n">
+				<p class="n">{$item.topic_count}</p>
+			</td>			
+			<td class="lm">
+				<p class="lt"><a class="o" {if $item.last_user_ind}href="{url page=$page form="profile" ind=$item.last_user_ind}"{/if}>{if $item.last_user_ind}{$item.last_user_login}{else}Аноним{/if}</a>{if $item.last_topic_ind>0} (Тема: <a href="{url page=$page form="message_list" topicgroup_ind=$item.ind topic_ind=$item.last_topic_ind}">{$item.last_topic_title|truncate:40:"...":false}</a>){/if}</p>
+				<p>{$item.updated|sdate}</p>
+				
+			</td>				
+			<td class="rsb">&nbsp;</td><td class="rb"></td>
+		</tr>
+		{/foreach}		
+		<tr>
+			<td colspan="2" class="lb_corner">
+				&nbsp;
+			</td>
+			<td class="bb" colspan="5">
+				&nbsp;
+			</td>
+			<td colspan="2" class="rb_corner">
+				&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td class="clear nolp" colspan="9">
+				<table class="dbl">
+				<tr>
+					<td class="l">
+						<p class="stat">Статистика форума: Тем - {$stat.topic_count}; Сообщений - {$stat.message_count}; Пользователей - {$stat.user_count}; Сообщений за сутки - {$stat.day_message_count};</p>
+					</td>
+					<td class="r">
+						{if $is_moderator}
+						<form action="{url page=$page}" method="POST">
+						<input type="hidden" name="act" value="add" />
+						<input type="submit" name="add" value="Добавить раздел" />
+						</form>
+						{/if}
+					</td>
+				</tr>
+				</table>
+		<h2 class="tm">Самые активные участники</h2>
+		{foreach from=$top_messagers item=item}		
+		<div class="uicon">
+		<div><img src="{$item.avatar}" alt=""></div>
+		<p><a href="{url page=$page form="profile" ind=$item.ind}">{$item.login}</a>  ({$item.message_count})</p>
+		</div>
+		{/foreach}
+		
+		<div class="cleaner"></div>
+	{*
+		<table class="dbl">
+			<tr>
+				<td class="lm">
+					<div class="spec">
+					<div class="cps1">
+						Популярная тема
+					</div>
+					<div class="cps2">
+						Акция
+					</div>
+					<div class="cps4">
+						Старая тема
+					</div>
+					</div>
+				
+				</td>
+				<td class="r">
+				</td>
+			</tr>
+		</table>
+		
+	*}	
+		
+		
+		</tr>
+
+		
+	</table>

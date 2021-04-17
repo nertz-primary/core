@@ -1,0 +1,15 @@
+{if $items.pcount > 1}
+<div class="pages">
+	<div>
+	    {foreach from=$items.pages item=n key=i name=pages}
+	    	{if $smarty.foreach.pages.first && $i != $items.pcount}
+	    		<a href="{url_array params=$items.url p=$items.pcount}">1</a><span>&hellip;</span>
+	    	{/if}
+	         <a {if $i == $items.p}class="active"{/if} href="{url_array params=$items.url p=$i}">{$n}</a>
+	         {if $smarty.foreach.pages.last && $i != 1}
+	    		<span>&hellip;</span><a href="{url_array params=$items.url p=1}">{$items.pcount}</a>
+	    	{/if}
+	    {/foreach}
+	</div>
+</div>	
+{/if}

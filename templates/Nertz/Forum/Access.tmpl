@@ -1,0 +1,15 @@
+<table class="rights">
+	<tr>
+		<th></th>
+		<th>Ч</th>
+		<th>З</th>
+		
+	</tr>
+	{foreach from=$access key=key item=item}
+		<tr>
+			<td>{$item.name}</td>
+			<td><input type="checkbox" name="rights[{$key}][r]" value="on" {if $item.r}checked {/if}/></td>
+			<td><input type="checkbox" name="rights[{$key}][w]" value="on" {if $item.w}checked {/if}/></td>
+		</tr>
+	{/foreach}
+</table>

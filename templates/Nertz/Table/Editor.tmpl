@@ -1,0 +1,77 @@
+<form action="{url_array params=$url}" method="POST" enctype="multipart/form-data"> 
+{if $caption}<h2>{$caption}</h2>{/if}
+{$table_header}
+	{* ==============================
+		Фильтры
+	   ============================== *}
+	<table class="form" cellpadding="0" cellspacing="0">
+		{foreach from=$filters key=name item=filter name=filters}
+		<tr id='tf_{$name}'>
+			<td class="caption filter">{$filter.caption}</td>
+			<td class="field filter">{$filter.html}</td>
+			{if $smarty.foreach.filters.first}
+				<td rowspan="{$smarty.foreach.filters.total}" class="filter">
+					{button name=$name caption="" img="/core/img/button/search.gif"}
+				</td>
+			{/if}
+		</tr>
+		{/foreach}
+	</table>
+	{* ==============================
+		Таблица
+	   ============================== *}
+{if $values}
+	<table class="table">
+	<tr>
+		{foreach from=$fields key=name item=field name=fields}
+			<th class="{$field.type}">{if $field.caption}{$field.caption}{else}&nbsp;{/if}</th>
+		{/foreach}
+	</tr>
+	{foreach from=$values item=record key=id name=values}
+	    <tr {if $movable_rows}onmouseover="moveRow(event)"{/if} {if $record.nertz_form_row_style} style="{$record.nertz_form_row_style}"{/if}{if $record.nertz_form_row_class} class="{$record.nertz_form_row_class}"{/if}>
+			{foreach from=$fields key=name item=field name=fields}
+				<td class="{$field.type}" {if $movable_rows} onselectstart="return false" onmousedown="startMoving(event)" {/if}>{if $record[$name]}{$record[$name]}{else}&nbsp;{/if}
+					{if $movable_rows && $smarty.foreach.fields.last}
+						<input type="hidden" name="{$movable_rows}[]" value="{$indexes[$id]}" />
+					{/if}
+				</td>
+			{/foreach}
+		</tr>
+	{/foreach}
+	</table>
+{/if}
+{$table_footer}
+{* ==============================
+	Страницы
+   ============================== *}
+{if $pcount > 1}
+<div class="pagination">
+	<ul>
+	{foreach from=$pages item=n key=i name=pages}
+	   	{if $smarty.foreach.pages.first && $i != $pcount}
+	   		<li><a href="{url_array params=$url p=$pcount}">1</a></li>
+	   		<li><span>&hellip;</span></li>
+	   	{/if}
+	     
+	   	<li {if $i == $p}class="active" {/if}><a href="{url_array params=$url p=$i}">{$n}</a></li>
+	    
+	   	{if $smarty.foreach.pages.last && $i != 1}
+	   		<li><span>&hellip;</span></li>
+	   		<li><a href="{url_array params=$url p=1}">{$pcount}</a></li>
+	   	{/if}
+	{/foreach}
+	</ul>
+</div>
+{/if}
+{* ==============================
+	Кнопки
+   ============================== *}
+{if $buttons}
+	<p>&nbsp;</p>
+	<div class="form-actions">
+		{foreach from=$buttons key=name item=button name=buttons}
+			{button name=$name caption=$button.caption img=$button.image bootstrap_class=$button.bootstrap_class }
+		{/foreach}
+	</div>
+{/if}
+</form>

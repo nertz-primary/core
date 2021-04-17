@@ -1,0 +1,36 @@
+<h1>Редактировать конфиг</h1>
+<form name="config" method="post" action="{url page=$page path=/}">
+<p class="path">
+<select name="level" onchange="this.form.submit();">
+{foreach from=$levels key=key item=item}
+	<option value="{$key}" {if $key === $level}SELECTED {/if}>{$key}</option>
+{/foreach}
+</select>
+{foreach from=$breadcrumbs item=breadcrumb}
+{if $breadcrumb.sub == 1}::&nbsp;{else}&nbsp;/&nbsp;{/if}
+<a href="{$breadcrumb.url}" {if $breadcrumb.sub == 1}class="gray"{/if}>{$breadcrumb.caption}</a>
+{/foreach}
+</p>
+</form>
+<br/>
+{if $table}
+{$table}
+{else}
+<table id="config">
+    <tr>
+        <td id="dirs">
+        {foreach from=$folders item=folder}
+            <a href="{$folder.url}" class="{$folder.type}">{$folder.caption}</a>
+        {/foreach}
+        </td>
+        <td id="sep"></td>
+        <td id="form">
+            {if $form}    
+                {$form}
+            {else}
+                <p> Нет редактируемых полей</p>
+            {/if}
+        </td>
+    </tr>
+</table>
+{/if}

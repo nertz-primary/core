@@ -1,0 +1,36 @@
+<form action="{url_array params=$url}" method="post" enctype="multipart/form-data"  class="form-horizontal">
+{if $caption}<legend>{$caption}</legend>{/if}
+{$table_header}
+{foreach from=$fields key=name item=field name=fields}
+<div id="tr_{$name}" class="control-group{if $field.error_message} error{/if}">
+{*<tr id='tr_{$name}' {if $field.error_message}class='error'{/if} >*}
+	{if $field.whole_line}	
+		{$field.html}
+	{else}
+		<label class="control-label" for="{$name}">{$field.caption}</label>
+		<div class="controls{if $field.description} input-append{/if}  input-append input no-left-margin">
+			{$field.html}
+			{if $field.description}
+				<span class="add-on" onmouseout='hide_info(this)' onmouseover='tooltip(this,"{$field.description|escape:"html"|replace:"\r\n":"<br/>"}")'>?</span>
+			{/if}
+			{if $field.error_message}<span class="help-inline">{$field.error_message}</span>{/if}
+		</div>
+		
+	{/if}
+	
+        
+       </div>
+{/foreach}
+<br/>
+<div class="form-actions">
+{foreach from=$buttons key=name item=button name=buttons}
+	{button name=$name caption=$button.caption img=$button.image bootstrap_class=$button.bootstrap_class}
+{/foreach}
+</div>
+</form>
+<script type="text/javascript">
+var {$form_name}_visibles={json value=$visibles};
+window.onload = function(){literal}{{/literal}
+form_select_change('', {$form_name}_visibles);
+{literal}}{/literal}
+</script>

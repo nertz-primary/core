@@ -1,0 +1,336 @@
+table.form,
+div.form label {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+table.form input.text,
+table.form textarea,
+table.form select {
+	text-align: left;
+	width: inherit;
+}
+table.form tr.error input,
+table.form tr.error textarea,
+table.form tr.error select,
+div.error input,
+div.error textarea,
+div.error select {
+	border-color: red;
+	color: red;
+}
+table.form tr.odd {
+	background: #EEE;
+}
+table.form td {
+	vertical-align: top;
+	padding: 8pt 2pt 8pt 2pt;
+}
+table.form td.caption,
+div.form label {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: bold;
+}
+table.form td.description,
+div.form div.description {
+	width: 200px;
+	color: #CCC;
+	font-size: 10pt;
+	padding: 0px;
+}
+table.form td.filter {
+	padding: 3pt 2pt 3pt 2pt;
+}
+table.form td.filter span {
+	white-space: nowrap;
+}
+table.form label.error,
+div.form label.error {
+	color: red;
+	font-size: 7pt;
+	font-weight: normal;
+}
+table.form_table {
+	border: 1px black solid;
+	border-width: 1px 0 0 1px;
+	clear: both;
+	float: left;
+	margin-bottom: 10px;
+}
+table.form_table td,
+table.form_table th {
+	padding: 3px 5px 3px 5px;
+	border: 1px black solid;
+	border-width: 0 1px 1px 0;
+	font-size: 14px;
+}
+table.form_table th {
+	background: #D9D9D9;
+}
+td.Button,
+th.Button,
+td.CheckBox,
+th.CheckBox,
+td.Checkbox,
+th.Checkbox,
+td.Bool,
+th.Bool {
+	text-align:center;
+}
+td.Button .n {
+	font-family: monospace;
+	letter-spacing: -1px;
+}
+
+div.form div.tr {
+    padding: 3px 0px 5px 10px;
+	white-space: nowrap;
+	float: left;
+	clear:both;
+}
+div.form label {
+    display:block;
+    text-align: left;
+}
+div.form input,
+div.form textarea,
+div.form select {
+	text-align: left;
+	border: 1px #7f9db9 solid;
+	padding: 2pt;
+}
+.buttons {
+    display: block;
+    height: 35px;
+    float:left;
+    clear: both;
+}
+.buttons a,
+.buttons button {
+    display:block;
+    float:left;
+    margin:0 7px 0 0;
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:100%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    padding:5px 10px 6px 7px;
+}
+.buttons button {
+    width:auto;
+    overflow:visible;
+    padding:4px 10px 3px 7px;
+
+}
+.buttons button[type] {
+    padding:5px 10px 5px 7px;
+    line-height:17px;
+}
+.buttons *:first-child+html button[type] {
+    padding:4px 10px 3px 7px;
+}
+.buttons button img, .buttons a img {
+    margin:0 3px -3px 0 !important;
+    padding:0;
+    border:none;
+    width:16px;
+    height:16px;
+    -margin:5px 3px -3px 0 !important;
+}
+.buttons button:hover,
+.buttons a:hover,
+.buttons .active {
+    background-color: #dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;
+}
+.buttons a:active {
+    background-color:#6299c5;
+    border:1px solid #6299c5;
+    color:#fff;
+}
+#help_mess {
+    display:inline;
+    position:absolute;
+    background:#FEFCD5;
+    border:solid 1px #E7E3BE;
+    padding:10px;
+    font-size: 10pt;
+
+}
+div.multiselect,
+div.form div.multiselect {
+	width: 212px;
+	float: left;
+}
+div.lpopup {
+	position:absolute;
+	display:none;
+	border:1px solid #767676;
+	background:#FFF;
+	z-index:99;
+	overflow:hidden;
+}
+div.lpopup iframe {
+	display:none;
+	display/**/:block;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:mask();
+	width:3000px;
+	height:3000px
+}
+div.lpopup div {
+	display:block;
+	white-space:nowrap;
+	font-size:10pt;
+	line-height:13pt;
+	color:#000;
+	text-decoration: none;
+	margin: 0;
+	padding-left: 3px;
+}
+div.lpopup div.active {
+	background-color:#3366cc;
+	color:#FFF;
+}
+i1nput.Lookup {
+	background:url(../../img/button/search_.gif) no-repeat right;
+}
+table.form_table td.Int,
+table.form_table th.Int,
+table.form_table td.Float,
+table.form_table th.Float {
+	text-align: right;
+}
+table.form_table td.Date {
+	white-space: nowrap;
+}
+table.form_table td.Int input {
+	text-align: right;
+}
+table.form_table td.Int input.error {
+	border-color: red;
+	color: red;
+}
+
+
+.pages {
+	clear:left;
+	font-family:Arial,sans-serif;
+	font-size:75%;
+	margin:1em 0pt;
+	padding: 0.5em 1em 0.5em 0pt;
+}
+.pages a:hover {
+	background:#E6E6E6 none repeat scroll 0%;
+}
+.pages a,
+.pages span{
+	background:#FFFFFF none repeat scroll 0%;
+	border:1px solid #FFFFFF;
+	color:#666666;
+	display:block;
+	float:left;
+	line-height:2.2em;
+	margin-right:0.2em;
+	padding:0pt 3px;
+	text-align:center;
+}
+.pages a {
+	border:1px solid #BEB1B1;
+	color:#777777 !important;
+	text-decoration:none;
+}
+.pages a.active {
+	background:#666666 none repeat scroll 0%;
+	border:1px solid #BEB1B1;
+	color:#FFFFFF !important;
+	font-weight:bold;
+}
+.pages span {
+	font-weight:bold;
+	color: black;
+	font-size: 10pt;
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	padding-left: 0;
+}
+.tag-cont input {
+	width: 100%;
+}
+.tag-cont .form-multiselect div {
+	float: left;
+	margin: 5px 5px 0 0;
+	border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    color: #333333;
+    float: left;
+    font-size: 12px;
+    padding: 2px 3px 2px 5px;
+}
+.tag-cont .form-multiselect div:hover {
+	background: #E9E9E9;
+}
+.tag-cont .form-multiselect div span {
+	visibility: hidden;
+}
+.tag-cont .form-multiselect div:hover span {
+	cursor: pointer;
+	visibility: visible;
+}
+table.form_table td.Tag span {
+	color: gray; 
+}
+
+.ui-autocomplete {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #DDDDDD;
+    cursor: default;
+    position: absolute;
+}
+.ui-menu .ui-menu-item {
+    clear: left;
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.ui-menu .ui-menu-item a {
+    color: black;
+    display: block;
+    line-height: 1.5;
+    padding: 0.2em 0.4em;
+    text-decoration: none;
+    margin: 0;
+    font-size: 12px;
+}
+.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+    background: none repeat scroll 0 0 #F6F6F6;
+}
+.tel-con{
+	width: 40px;
+}
+.tel-cod{
+	width: 40px;
+}
+.tel-num{
+	width: 117px;
+}
+table.multiselect td label.checkbox {
+	padding-right: 40px;
+	white-space: nowrap;
+}
+input.text,
+textarea,
+select {
+	width: inherit;
+}
